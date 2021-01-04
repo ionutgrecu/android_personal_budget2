@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Personal Budget</string>
+    <string name="description">Description</string>
+    <string name="date_of_outgoing">Date of outgoing</string>
 </resources>
