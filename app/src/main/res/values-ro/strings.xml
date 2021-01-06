@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Personal Budget</string>
+    <string name="description">Descriere</string>
+    <string name="date_of_outgoing">Data cheltuielii</string>
+    <string name="the_amount_spent">Suma cheltuita</string>
+    <string name="add">Adauga</string>
+    <string name="add_outgoing">Adauga cheltuiala</string>
+    <string name="add_error_sum">scrie suma cheltuita</string>
+    <string name="add_error_description">scrie descrierea cheltuielii</string>
+    <string name="add_error_sum_invalid">suma cheltuita este incorecta</string>
+</resources>
