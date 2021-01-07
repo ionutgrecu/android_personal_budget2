@@ -23,7 +23,6 @@ public class add extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         setTitle(getString(R.string.add_outgoing));
-        Intent intent=getIntent();
 
         tietSum=findViewById(R.id.tiet_sum);
         tietDescription=findViewById(R.id.tiet_description);
@@ -36,23 +35,30 @@ public class add extends AppCompatActivity {
                 String strErr="";
                 Boolean boolErr=false;
 
-                if(tietSum.getText().toString().trim()==""){
+                if(tietSum.getText().toString().trim().isEmpty()){
                     strErr+=" - "+getString(R.string.add_error_sum)+"\n";
                     boolErr=true;
-                }
-
-                if(Integer.parseInt(tietSum.getText().toString().trim())<=0){
+                }else if(Integer.parseInt(tietSum.getText().toString().trim())<=0){
                     strErr+=" - "+getString(R.string.add_error_sum_invalid)+"\n";
                     boolErr=true;
                 }
 
-                if(tietDescription.getText().toString().trim()==""){
+                if(tietDescription.getText().toString().trim().isEmpty()){
                     strErr+=" - "+getString(R.string.add_error_description)+"\n";
                     boolErr=true;
                 }
 
                 if(boolErr)
                     Toast.makeText(add.this, "Some errors occurred:"+"\n\n"+strErr, Toast.LENGTH_SHORT).show();
+                else{
+                    Intent resultIntent=new Intent();
+                    resultIntent.putExtra("sum",Float.parseFloat(tietSum.getText().toString().trim()));
+                    resultIntent.putExtra("description",tietDescription.getText().toString());
+                    resultIntent.putExtra("date",cvDate.getDate());
+
+                    setResult(RESULT_OK,resultIntent);
+                    finish();
+                }
             }
         });
     }
