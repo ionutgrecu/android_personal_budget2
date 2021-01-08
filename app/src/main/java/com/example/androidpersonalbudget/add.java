@@ -1,5 +1,6 @@
 package com.example.androidpersonalbudget;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -49,7 +50,7 @@ public class add extends AppCompatActivity {
                 }
 
                 if(boolErr)
-                    Toast.makeText(add.this, "Some errors occurred:"+"\n\n"+strErr, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(add.this, "Some errors occurred:"+"\n\n"+strErr, Toast.LENGTH_LONG).show();
                 else{
                     Intent resultIntent=new Intent();
                     resultIntent.putExtra("sum",Float.parseFloat(tietSum.getText().toString().trim()));

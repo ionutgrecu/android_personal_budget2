@@ -7,7 +7,7 @@
     tools:context=".add">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_sum"
+        android:id="@+id/til_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -29,6 +29,19 @@
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:id="@+id/spn_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_amount" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_description"
         android:layout_width="match_parent"
@@ -41,7 +54,7 @@
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_sum">
+        app:layout_constraintTop_toBottomOf="@+id/spn_category">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_description"
