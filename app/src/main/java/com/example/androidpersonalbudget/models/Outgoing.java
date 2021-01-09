@@ -10,25 +10,34 @@ import java.sql.Date;
 
 @Entity(tableName = "outgoings")
 public class Outgoing implements Serializable {
-    @PrimaryKey(autogenerate=true)
+    @PrimaryKey(autoGenerate=true)
+    @ColumnInfo(name="id")
     private int id;
 
+    @ColumnInfo(name="amount")
     private float amount;
 
+    @ColumnInfo(name="category")
+    private String category;
+
+    @ColumnInfo(name = "description")
     private String description;
 
+    @ColumnInfo(name="date")
     private Date date;
 
-    public Outgoing(int id, float amount, String description, Date date) {
+    public Outgoing(int id, float amount, String category, String description, Date date) {
         this.id = id;
         this.amount = amount;
+        this.category = category;
         this.description = description;
         this.date = date;
     }
 
     @Ignore
-    public Outgoing(float amount, String description, Date date) {
+    public Outgoing(float amount, String category, String description, Date date) {
         this.amount = amount;
+        this.category = category;
         this.description = description;
         this.date = date;
     }
@@ -47,6 +56,14 @@ public class Outgoing implements Serializable {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDescription() {
