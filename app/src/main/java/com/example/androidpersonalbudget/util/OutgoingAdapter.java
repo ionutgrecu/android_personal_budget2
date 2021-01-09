@@ -2,18 +2,13 @@ package com.example.androidpersonalbudget.util;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
-import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import com.example.androidpersonalbudget.models.Outgoing;
+import com.example.androidpersonalbudget.database.models.Outgoing;
 
 public class OutgoingAdapter extends ArrayAdapter<Outgoing> {
 

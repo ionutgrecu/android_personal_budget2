@@ -1,4 +1,4 @@
-package com.example.androidpersonalbudget.models;
+package com.example.androidpersonalbudget.database.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

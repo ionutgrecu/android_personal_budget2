@@ -1,4 +1,4 @@
-package com.example.androidpersonalbudget.helpers.dao;
+package com.example.androidpersonalbudget.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.androidpersonalbudget.models.Outgoing;
+import com.example.androidpersonalbudget.database.models.Outgoing;
 
 import java.util.List;
 

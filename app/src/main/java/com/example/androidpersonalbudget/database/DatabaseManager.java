@@ -1,4 +1,4 @@
-package com.example.androidpersonalbudget.helpers;
+package com.example.androidpersonalbudget.database;
 
 import android.content.Context;
 
@@ -7,8 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.androidpersonalbudget.helpers.dao.OutgoingDao;
-import com.example.androidpersonalbudget.models.Outgoing;
+import com.example.androidpersonalbudget.database.dao.OutgoingDao;
+import com.example.androidpersonalbudget.database.models.Outgoing;
 import com.example.androidpersonalbudget.util.DateConverter;
 
 @Database(entities = {Outgoing.class}, exportSchema = false,version = 1)
