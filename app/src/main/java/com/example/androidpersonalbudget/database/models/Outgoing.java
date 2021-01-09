@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.androidpersonalbudget.util.DateConverter;
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -88,7 +90,7 @@ public class Outgoing implements Serializable {
                 "id=" + id +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
-                ", date=" + date +
+                ", date=" + DateConverter.fromDate(date) +
                 '}';
     }
 }
