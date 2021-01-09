@@ -12,7 +12,7 @@ import java.sql.Date;
 public class Outgoing implements Serializable {
     @PrimaryKey(autoGenerate=true)
     @ColumnInfo(name="id")
-    private int id;
+    private long id;
 
     @ColumnInfo(name="amount")
     private float amount;
@@ -26,7 +26,7 @@ public class Outgoing implements Serializable {
     @ColumnInfo(name="date")
     private Date date;
 
-    public Outgoing(int id, float amount, String category, String description, Date date) {
+    public Outgoing(long id, float amount, String category, String description, Date date) {
         this.id = id;
         this.amount = amount;
         this.category = category;
@@ -42,11 +42,11 @@ public class Outgoing implements Serializable {
         this.date = date;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
