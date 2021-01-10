@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.example.androidpersonalbudget.asyncTask.Callback;
 import com.example.androidpersonalbudget.database.models.Outgoing;
@@ -17,7 +20,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_ADD = 1;
+    public static final int REQUEST_CODE_EDIT = 2;
     private FloatingActionButton btnAdd;
+    private ListView lvOutgoings;
 
     private List<Outgoing> outgoings = new ArrayList<>();
     private OutgoingService outgoingService;
@@ -33,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, add.class);
                 startActivityForResult(intent, REQUEST_CODE_ADD);
+            }
+        });
+
+        lvOutgoings=findViewById(R.id.lv_main_outgoings);
+        lvOutgoings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), add.class);
+                intent.putExtra(add.OUTGOING_KEY, outgoings.get(i));
+                startActivityForResult(intent, REQUEST_CODE_EDIT);
             }
         });
 
@@ -78,4 +93,5 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
+
 }

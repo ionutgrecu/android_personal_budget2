@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.androidpersonalbudget.database.models.Outgoing;
@@ -18,6 +20,7 @@ public class add extends AppCompatActivity {
     private TextInputEditText tietSum;
     private TextInputEditText tietDescription;
     private CalendarView cvDate;
+    private Spinner spnCategory;
     private Button btnSave;
 
     private Outgoing outgoing=null;
@@ -32,6 +35,8 @@ public class add extends AppCompatActivity {
         tietSum=findViewById(R.id.tiet_sum);
         tietDescription=findViewById(R.id.tiet_description);
         cvDate=findViewById(R.id.cv_date);
+        spnCategory=findViewById(R.id.spn_category);
+        addCategoryAdapter();
 
         btnSave=findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -64,5 +69,12 @@ public class add extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void addCategoryAdapter() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),
+                R.array.outgoing_category_values,
+                android.R.layout.simple_spinner_dropdown_item);
+        spnCategory.setAdapter(adapter);
     }
 }

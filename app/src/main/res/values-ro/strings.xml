@@ -9,4 +9,13 @@
     <string name="add_error_sum">scrie suma cheltuita</string>
     <string name="add_error_description">scrie descrierea cheltuielii</string>
     <string name="add_error_sum_invalid">suma cheltuita este incorecta</string>
+
+    <string-array name="outgoing_category_values">
+        <item>Mancare</item>
+        <item>Cadouri</item>
+        <item>Fitness</item>
+        <item>Haine</item>
+        <item>Masina</item>
+        <item>Imprumut bancar</item>
+    </string-array>
 </resources>

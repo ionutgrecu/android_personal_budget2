@@ -8,4 +8,13 @@
     <string name="add_error_sum">type the outgoing sum</string>
     <string name="add_error_description">type the description of the outgoing</string>
     <string name="add_error_sum_invalid">invalid amount spent</string>
+
+    <string-array name="outgoing_category_values">
+        <item>Food</item>
+        <item>Present</item>
+        <item>Gym</item>
+        <item>Clothes</item>
+        <item>Car</item>
+        <item>Bank loans</item>
+    </string-array>
 </resources>
