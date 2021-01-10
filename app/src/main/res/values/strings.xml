@@ -9,6 +9,13 @@
     <string name="add_error_description">type the description of the outgoing</string>
     <string name="add_error_sum_invalid">invalid amount spent</string>
 
+    <string name="lv_outgoing_row_date">Date</string>
+    <string name="lv_outgoing_row_category">Category</string>
+    <string name="lv_outgoing_row_amount">Amount</string>
+    <string name="add_outgoing_row_logo">logo</string>
+    <string name="lv_outgoing_row_default_value">-</string>
+    <string name="lv_outgoing_row_amount_value">%1$s lei</string>
+
     <string-array name="outgoing_category_values">
         <item>Food</item>
         <item>Present</item>

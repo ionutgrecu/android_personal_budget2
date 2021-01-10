@@ -2,11 +2,17 @@ package com.example.androidpersonalbudget.util;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.example.androidpersonalbudget.R;
 
 import com.example.androidpersonalbudget.database.models.Outgoing;
 
@@ -25,43 +31,43 @@ public class OutgoingAdapter extends ArrayAdapter<Outgoing> {
         this.inflater = inflater;
     }
 
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        View view = inflater.inflate(resource, parent, false);
-//        Outgoing Outgoing = Outgoings.get(position);
-//        if (Outgoing != null) {
-//            addDate(view, Outgoing.getDate());
-//            addCategory(view, Outgoing.getCategory());
-//            addAmount(view, Outgoing.getAmount());
-//        }
-//        return view;
-//    }
-//
-//    private void addDate(View view, Date date) {
-//        TextView textView = view.findViewById(R.id.tv_lv_Outgoing_row_date);
-//        addTextViewContent(textView, DateConverter.fromDate(date));
-//    }
-//
-//    private void addCategory(View view, String category) {
-//        TextView textView = view.findViewById(R.id.tv_lv_Outgoing_row_category);
-//        addTextViewContent(textView, category);
-//    }
-//
-//    private void addAmount(View view, Double amount) {
-//        TextView textView = view.findViewById(R.id.tv_lv_Outgoing_row_amount);
-//        String value = null;
-//        if (amount != null) {
-//            value = context.getString(R.string.lv_Outgoing_row_amount_value, amount.toString());
-//        }
-//        addTextViewContent(textView, value);
-//    }
-//
-//    private void addTextViewContent(TextView textView, String value) {
-//        if (value != null && !value.isEmpty()) {
-//            textView.setText(value);
-//        } else {
-//            textView.setText(R.string.lv_Outgoing_row_default_value);
-//        }
-//    }
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = inflater.inflate(resource, parent, false);
+        Outgoing Outgoing = Outgoings.get(position);
+        if (Outgoing != null) {
+            addDate(view, Outgoing.getDate());
+            addCategory(view, Outgoing.getCategory());
+            addAmount(view, Outgoing.getAmount());
+        }
+        return view;
+    }
+
+    private void addDate(View view, Date date) {
+        TextView textView = view.findViewById(R.id.tv_lv_outgoing_row_date);
+        addTextViewContent(textView, DateConverter.toString((java.sql.Date) date));
+    }
+
+    private void addCategory(View view, String category) {
+        TextView textView = view.findViewById(R.id.tv_lv_outgoing_row_category);
+        addTextViewContent(textView, category);
+    }
+
+    private void addAmount(View view, Double amount) {
+        TextView textView = view.findViewById(R.id.tv_lv_outgoing_row_amount);
+        String value = null;
+        if (amount != null) {
+            value = context.getString(R.string.lv_outgoing_row_amount_value, amount.toString());
+        }
+        addTextViewContent(textView, value);
+    }
+
+    private void addTextViewContent(TextView textView, String value) {
+        if (value != null && !value.isEmpty()) {
+            textView.setText(value);
+        } else {
+            textView.setText(R.string.lv_outgoing_row_default_value);
+        }
+    }
 }

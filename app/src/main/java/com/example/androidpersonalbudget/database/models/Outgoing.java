@@ -17,7 +17,7 @@ public class Outgoing implements Serializable {
     private long id;
 
     @ColumnInfo(name="amount")
-    private float amount;
+    private double amount;
 
     @ColumnInfo(name="category")
     private String category;
@@ -28,7 +28,7 @@ public class Outgoing implements Serializable {
     @ColumnInfo(name="date")
     private Date date;
 
-    public Outgoing(long id, float amount, String category, String description, Date date) {
+    public Outgoing(long id, double amount, String category, String description, Date date) {
         this.id = id;
         this.amount = amount;
         this.category = category;
@@ -37,7 +37,7 @@ public class Outgoing implements Serializable {
     }
 
     @Ignore
-    public Outgoing(float amount, String category, String description, Date date) {
+    public Outgoing(double amount, String category, String description, Date date) {
         this.amount = amount;
         this.category = category;
         this.description = description;
@@ -52,11 +52,11 @@ public class Outgoing implements Serializable {
         this.id = id;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

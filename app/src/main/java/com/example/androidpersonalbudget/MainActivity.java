@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         outgoingService = new OutgoingService(getApplicationContext());
         outgoingService.getAll(getAllDbCallback());
     }
