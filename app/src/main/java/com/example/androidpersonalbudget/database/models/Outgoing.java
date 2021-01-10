@@ -89,6 +89,7 @@ public class Outgoing implements Serializable {
         return "Outgoing{" +
                 "id=" + id +
                 ", amount=" + amount +
+                ", category="+category+
                 ", description='" + description + '\'' +
                 ", date=" + date.getTime() +
                 '}';

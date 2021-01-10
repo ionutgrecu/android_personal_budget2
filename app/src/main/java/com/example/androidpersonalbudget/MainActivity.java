@@ -16,9 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int REQUEST_CODE_ADD = 1;
     private FloatingActionButton btnAdd;
 
-    private List<Outgoing> outgoings=new ArrayList<>();
+    private List<Outgoing> outgoings = new ArrayList<>();
     private OutgoingService outgoingService;
 
     @Override
@@ -26,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAdd=findViewById(R.id.btn_add);
+        btnAdd = findViewById(R.id.btn_add);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,add.class);
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(MainActivity.this, add.class);
+                startActivityForResult(intent, REQUEST_CODE_ADD);
             }
         });
 
-        outgoingService=new OutgoingService(getApplicationContext());
+        outgoingService = new OutgoingService(getApplicationContext());
         outgoingService.getAll(getAllDbCallback());
     }
 
@@ -43,18 +44,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1){
-            if(resultCode==RESULT_OK){
-
+        if (resultCode == RESULT_OK) {
+            switch(requestCode){
+                case REQUEST_CODE_ADD:
+                    Outgoing outgoing = (Outgoing) data.getSerializableExtra(add.OUTGOING_KEY);
+                    outgoingService.insert(outgoing,insertDbCallback());
+                    break;
             }
         }
     }
 
-    private Callback<List<Outgoing>> getAllDbCallback(){
+    private Callback<Outgoing> insertDbCallback(){
+        return new Callback<Outgoing>() {
+            @Override
+            public void runResultOnUiThread(Outgoing result) {
+                if(result!=null){
+                    outgoings.add(result);
+//                    notifyAdapter();
+                }
+            }
+        };
+    }
+
+    private Callback<List<Outgoing>> getAllDbCallback() {
         return new Callback<List<Outgoing>>() {
             @Override
             public void runResultOnUiThread(List<Outgoing> result) {
-                if(result!=null){
+                if (result != null) {
                     outgoings.clear();
                     outgoings.addAll(result);
 //                    notifyAdapter();

@@ -10,13 +10,17 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import com.example.androidpersonalbudget.database.models.Outgoing;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class add extends AppCompatActivity {
+    public static final String OUTGOING_KEY = "outgoingKey";
     private TextInputEditText tietSum;
     private TextInputEditText tietDescription;
     private CalendarView cvDate;
     private Button btnSave;
+
+    private Outgoing outgoing=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +57,7 @@ public class add extends AppCompatActivity {
                     Toast.makeText(add.this, "Some errors occurred:"+"\n\n"+strErr, Toast.LENGTH_LONG).show();
                 else{
                     Intent resultIntent=new Intent();
-                    resultIntent.putExtra("sum",Float.parseFloat(tietSum.getText().toString().trim()));
-                    resultIntent.putExtra("description",tietDescription.getText().toString());
-                    resultIntent.putExtra("date",cvDate.getDate());
+                    resultIntent.putExtra(OUTGOING_KEY,outgoing);
 
                     setResult(RESULT_OK,resultIntent);
                     finish();
