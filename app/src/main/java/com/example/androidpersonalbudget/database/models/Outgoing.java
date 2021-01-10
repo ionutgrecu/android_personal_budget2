@@ -90,7 +90,7 @@ public class Outgoing implements Serializable {
                 "id=" + id +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
-                ", date=" + DateConverter.fromDate(date) +
+                ", date=" + date.getTime() +
                 '}';
     }
 }
