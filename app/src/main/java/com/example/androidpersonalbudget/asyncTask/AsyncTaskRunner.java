@@ -1,5 +1,4 @@
-package eu.ase.ro.seminar10.asyncTask;
-
+package com.example.androidpersonalbudget.asyncTask;
 
 import android.os.Handler;
 import android.os.Looper;

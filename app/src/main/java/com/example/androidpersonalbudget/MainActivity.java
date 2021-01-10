@@ -7,10 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.androidpersonalbudget.asyncTask.Callback;
+import com.example.androidpersonalbudget.database.models.Outgoing;
+import com.example.androidpersonalbudget.database.service.OutgoingService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private FloatingActionButton btnAdd;
+
+    private List<Outgoing> outgoings=new ArrayList<>();
+    private OutgoingService outgoingService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,1);
             }
         });
+
+        outgoingService.getAll(getAllDbCallback());
     }
 
     @Override
@@ -36,5 +47,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    private Callback<List<Outgoing>> getAllDbCallback(){
+        return new Callback<List<Outgoing>>() {
+            @Override
+            public void runResultOnUiThread(List<Outgoing> result) {
+                if(result!=null){
+                    outgoings.clear();
+                    outgoings.addAll(result);
+//                    notifyAdapter();
+                }
+            }
+        };
     }
 }

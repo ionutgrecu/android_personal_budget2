@@ -1,4 +1,4 @@
-package eu.ase.ro.seminar10.asyncTask;
+package com.example.androidpersonalbudget.asyncTask;
 
 public class HandlerMessage<R> implements Runnable {
     //este trimis RunnableTask dupa ce a fost primi din firul principal (activitate/fragment)
