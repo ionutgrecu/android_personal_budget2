@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.androidpersonalbudget.asyncTask.Callback;
 import com.example.androidpersonalbudget.database.models.Outgoing;
 import com.example.androidpersonalbudget.database.service.OutgoingService;
+import com.example.androidpersonalbudget.util.OutgoingAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        addAdapter();
 
         outgoingService = new OutgoingService(getApplicationContext());
         outgoingService.getAll(getAllDbCallback());
@@ -90,10 +93,20 @@ public class MainActivity extends AppCompatActivity {
                 if (result != null) {
                     outgoings.clear();
                     outgoings.addAll(result);
-//                    notifyAdapter();
+                    notifyAdapter();
                 }
             }
         };
     }
 
+    private void addAdapter() {
+        OutgoingAdapter adapter = new OutgoingAdapter(getApplicationContext(), R.layout.lv_expense_row,
+                outgoings, getLayoutInflater());
+        lvOutgoings.setAdapter(adapter);
+    }
+
+    private void notifyAdapter() {
+        OutgoingAdapter adapter = (OutgoingAdapter) lvOutgoings.getAdapter();
+        adapter.notifyDataSetChanged();
+    }
 }

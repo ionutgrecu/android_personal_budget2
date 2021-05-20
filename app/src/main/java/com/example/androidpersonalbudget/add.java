@@ -59,8 +59,11 @@ public class add extends AppCompatActivity {
                 }
 
                 if(boolErr)
-                    Toast.makeText(add.this, "Some errors occurred:"+"\n\n"+strErr, Toast.LENGTH_LONG).show();
+                    Toast.makeText(add.this, getString(R.string.add_error)+"\n\n"+strErr, Toast.LENGTH_LONG).show();
                 else{
+                    outgoing.setAmount(Float.parseFloat(tietSum.getText().toString()));
+                    outgoing.setDescription(tietDescription.getText().toString());
+
                     Intent resultIntent=new Intent();
                     resultIntent.putExtra(OUTGOING_KEY,outgoing);
 
