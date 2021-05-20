@@ -37,6 +37,11 @@ public class Outgoing implements Serializable {
     }
 
     @Ignore
+    public Outgoing(){
+
+    }
+
+    @Ignore
     public Outgoing(double amount, String category, String description, Date date) {
         this.amount = amount;
         this.category = category;
@@ -52,7 +57,7 @@ public class Outgoing implements Serializable {
         this.id = id;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 

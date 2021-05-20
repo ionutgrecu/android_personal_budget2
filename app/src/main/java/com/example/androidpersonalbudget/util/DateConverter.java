@@ -21,11 +21,22 @@ public class DateConverter {
         return date == null ? null : date.getTime();
     }
 
+    @TypeConverter
     public static String toString(Date value) {
         if (value == null) {
             return null;
         }
         //metoda format este utilizata pentru conversia Date to String
         return formatter.format(value);
+    }
+
+    @TypeConverter
+    public static java.util.Date fromString(String value) {
+        try {
+            //metoda parsa este folosita pentru conversia String to Date
+            return formatter.parse(value);
+        } catch (ParseException e) {
+            return null;
+        }
     }
 }

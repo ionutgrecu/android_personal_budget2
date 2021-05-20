@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void runResultOnUiThread(Outgoing result) {
                 if(result!=null){
                     outgoings.add(result);
-//                    notifyAdapter();
+                    notifyAdapter();
                 }
             }
         };
