@@ -12,6 +12,9 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+
 import com.example.androidpersonalbudget.R;
 
 import com.example.androidpersonalbudget.database.models.Outgoing;
@@ -46,8 +49,12 @@ public class OutgoingAdapter extends ArrayAdapter<Outgoing> {
     }
 
     private void addDate(View view, Date date) {
+        ConstraintLayout layout=view.findViewById(R.id.row_layout);
         TextView textView = view.findViewById(R.id.tv_lv_outgoing_row_date);
         addTextViewContent(textView, DateConverter.toString((java.sql.Date) date));
+
+        if(new Date().before(date))
+            layout.setBackgroundColor(ContextCompat.getColor(this.getContext(),R.color.lvExpenseRowBackgroundFuture));
     }
 
     private void addCategory(View view, String category) {
