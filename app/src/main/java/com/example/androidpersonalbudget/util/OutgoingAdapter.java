@@ -20,14 +20,14 @@ public class OutgoingAdapter extends ArrayAdapter<Outgoing> {
 
     private Context context;
     private int resource;
-    private List<Outgoing> Outgoings;
+    private List<Outgoing> outgoings;
     private LayoutInflater inflater;
 
     public OutgoingAdapter(@NonNull Context context, int resource, @NonNull List<Outgoing> objects, LayoutInflater inflater) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
-        this.Outgoings = objects;
+        this.outgoings = objects;
         this.inflater = inflater;
     }
 
@@ -35,11 +35,12 @@ public class OutgoingAdapter extends ArrayAdapter<Outgoing> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = inflater.inflate(resource, parent, false);
-        Outgoing Outgoing = Outgoings.get(position);
-        if (Outgoing != null) {
-            addDate(view, Outgoing.getDate());
-            addCategory(view, Outgoing.getCategory());
-            addAmount(view, Outgoing.getAmount());
+        Outgoing outgoing = outgoings.get(position);
+        if (null!=outgoing) {
+            addDate(view, outgoing.getDate());
+            addCategory(view, outgoing.getCategory());
+            addAmount(view, outgoing.getAmount());
+            addDescription(view, outgoing.getDescription());
         }
         return view;
     }
@@ -61,6 +62,11 @@ public class OutgoingAdapter extends ArrayAdapter<Outgoing> {
             value = context.getString(R.string.lv_outgoing_row_amount_value, amount.toString());
         }
         addTextViewContent(textView, value);
+    }
+
+    private void addDescription(View view, String description) {
+        TextView textView = view.findViewById(R.id.tv_lv_outgoing_row_description);
+        addTextViewContent(textView, description);
     }
 
     private void addTextViewContent(TextView textView, String value) {

@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface OutgoingDao {
 
-    @Query("SELECT * FROM outgoings")
+    @Query("SELECT * FROM outgoings ORDER BY `date` DESC")
     public List<Outgoing> getAll();
 
     @Insert
