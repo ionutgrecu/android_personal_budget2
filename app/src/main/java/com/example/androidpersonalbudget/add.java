@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,16 +38,17 @@ public class add extends AppCompatActivity {
         setTitle(getString(R.string.add_outgoing));
 
         intent=getIntent();
-        if(intent.hasExtra(OUTGOING_KEY)){
-            outgoing=(Outgoing) intent.getSerializableExtra(OUTGOING_KEY);
-            outgoingToView(outgoing);
-        }
 
         tietSum=findViewById(R.id.tiet_sum);
         tietDescription=findViewById(R.id.tiet_description);
         cvDate=findViewById(R.id.cv_date);
         spnCategory=findViewById(R.id.spn_category);
         addCategoryAdapter();
+
+        if(intent.hasExtra(OUTGOING_KEY)){
+            outgoing=(Outgoing) intent.getSerializableExtra(OUTGOING_KEY);
+            outgoingToView(outgoing);
+        }
 
         btnSave=findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +78,7 @@ public class add extends AppCompatActivity {
                     outgoing.setAmount(Double.parseDouble(tietSum.getText().toString()));
                     outgoing.setDate(DateConverter.toDate(cvDate.getDate()));
                     outgoing.setDescription(tietDescription.getText().toString());
+                    outgoing.setCategory(spnCategory.getSelectedItem().toString());
 
                     Intent resultIntent=new Intent();
                     resultIntent.putExtra(OUTGOING_KEY,outgoing);
