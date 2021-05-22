@@ -17,6 +17,7 @@ import com.example.androidpersonalbudget.database.service.OutgoingService;
 import com.example.androidpersonalbudget.util.OutgoingAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         btnChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,chart.class);
+                Intent intent=new Intent(getApplicationContext(),chart.class);
+                intent.putExtra(chart.OUTGOINGS_KEY,(Serializable) outgoings);
                 startActivity(intent);
             }
         });

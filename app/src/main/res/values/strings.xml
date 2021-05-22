@@ -26,4 +26,5 @@
         <item>Datorii</item>
     </string-array>
     <string name="lv_outgoing_row_description">Description</string>
+    <string name="outgoing_status">Outgoings Status</string>
 </resources>

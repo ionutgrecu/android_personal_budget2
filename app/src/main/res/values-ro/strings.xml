@@ -26,4 +26,5 @@
     <string name="lv_outgoing_row_amount_value">%1$s lei</string>
     <string name="add_error">S-a intamplat o eroare:</string>
     <string name="lv_outgoing_row_description">Descriere</string>
+    <string name="outgoing_status">Status cheltuieli</string>
 </resources>
