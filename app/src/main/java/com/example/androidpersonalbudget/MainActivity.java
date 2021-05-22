@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_ADD = 1;
     public static final int REQUEST_CODE_EDIT = 2;
     private FloatingActionButton btnAdd;
+    private FloatingActionButton btnChart;
     private ListView lvOutgoings;
 
     private List<Outgoing> outgoings = new ArrayList<>();
@@ -41,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, add.class);
                 startActivityForResult(intent, REQUEST_CODE_ADD);
+            }
+        });
+
+        btnChart=findViewById(R.id.btn_chart);
+        btnChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,chart.class);
+                startActivity(intent);
             }
         });
 
