@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import com.example.androidpersonalbudget.chart;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_ADD = 1;
@@ -50,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
         btnChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),chart.class);
-                intent.putExtra(chart.OUTGOINGS_KEY,(Serializable) outgoings);
-                startActivity(intent);
+                Intent intent1=new Intent(MainActivity.this,chart.class);
+                intent1.putExtra(chart.OUTGOINGS_KEY,(Serializable) outgoings);
+                startActivity(intent1);
             }
         });
 

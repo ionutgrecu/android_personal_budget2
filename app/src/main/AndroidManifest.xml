@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidPersonalBudget">
         <activity android:name=".add"></activity>
+        <activity android:name=".chart"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
