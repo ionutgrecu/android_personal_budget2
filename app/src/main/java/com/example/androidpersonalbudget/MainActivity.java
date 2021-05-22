@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_EDIT = 2;
     private FloatingActionButton btnAdd;
     private FloatingActionButton btnChart;
+    private FloatingActionButton btnPrices;
     private ListView lvOutgoings;
 
     private List<Outgoing> outgoings = new ArrayList<>();
@@ -54,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent1=new Intent(MainActivity.this,chart.class);
                 intent1.putExtra(chart.OUTGOINGS_KEY,(Serializable) outgoings);
                 startActivity(intent1);
+            }
+        });
+
+        btnPrices=findViewById(R.id.btn_prices);
+        btnPrices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),prices.class);
+                startActivity(intent);
             }
         });
 

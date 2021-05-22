@@ -28,6 +28,17 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_add"
         app:srcCompat="@drawable/bar_chart" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_prices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_chart"
+        app:srcCompat="@drawable/price_tag" />
+
     <ListView
         android:id="@+id/lv_main_outgoings"
         android:layout_width="match_parent"
