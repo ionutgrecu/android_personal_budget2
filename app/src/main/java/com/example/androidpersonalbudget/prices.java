@@ -5,20 +5,29 @@ import android.os.Handler;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidpersonalbudget.asyncTask.AsyncTaskRunner;
+import com.example.androidpersonalbudget.asyncTask.Callback;
+import com.example.androidpersonalbudget.network.HttpManager;
 import com.example.androidpersonalbudget.network.HttpManagerV2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Iterator;
+import java.util.concurrent.Callable;
 
 public class prices extends AppCompatActivity {
     private WebView webview;
     public static final String PRICES_URL = "https://jsonkeeper.com/b/XCZH";
 
-    private JSONArray jsonData;
+    private AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
+    private JSONObject jsonData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,33 +42,38 @@ public class prices extends AppCompatActivity {
     }
 
     private void getPrices(){
-        Thread thread=new Thread(){
+        Callable<String> asyncOperation = new HttpManager(PRICES_URL);
+        Callback<String> mainThreadOperation = receivePricesFromHttp();
+        asyncTaskRunner.executeAsync(asyncOperation, mainThreadOperation);
+    }
+
+    private Callback<String> receivePricesFromHttp() {
+        return new Callback<String>() {
             @Override
-            public void run(){
-                final String result=new HttpManagerV2(PRICES_URL).process();
-                new Handler(getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            jsonData = new JSONArray(result);
-                            displayData();
-                        }catch(JSONException e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
+            public void runResultOnUiThread(String result) {
+//                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+
+                try {
+                    jsonData = new JSONObject(result);
+                    displayData();
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
             }
         };
-        thread.start();
     }
 
     private void displayData(){
         String html="<html><body>";
         html+="<ul>";
 
-        for(int i=0;i<jsonData.length();i++){
+        Iterator<String> keys=jsonData.keys();
+        while(keys.hasNext()){
+            String key=keys.next();
+
             html+="<li>";
-            html+=jsonData.getJSONArray(i).getString();
+            html+=key;
+
             html+="</li>";
         }
         html+="</ul>";
