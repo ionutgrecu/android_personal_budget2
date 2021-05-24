@@ -67,17 +67,34 @@ public class prices extends AppCompatActivity {
         String html="<html><body>";
         html+="<ul>";
 
-        Iterator<String> keys=jsonData.keys();
+        html+=appendRows(jsonData);
+
+        html+="</ul>";
+
+        webview.loadData("<html><body>"+html+"</body></html>","text/html; charset=utf-8","UTF-8");
+    }
+
+    private String appendRows(JSONObject json){
+        String html="";
+
+        Iterator<String> keys=json.keys();
         while(keys.hasNext()){
             String key=keys.next();
 
             html+="<li>";
-            html+=key;
+                html+="<span style='font-weight:bold;'>"+key+":</span>";
+
+                try {
+                    if (json.get(key) instanceof JSONObject)
+                        html += "<ul>" + appendRows((JSONObject) json.get(key)) + "</ul>";
+                    else html+="<span>"+json.get(key).toString()+"LEI</span>";
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
             html+="</li>";
         }
-        html+="</ul>";
 
-        webview.loadData("<html><body>"+html+"</body></html>","text/html; charset=utf-8","UTF-8");
+        return html;
     }
 }
