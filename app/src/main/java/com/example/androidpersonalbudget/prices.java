@@ -1,21 +1,14 @@
 package com.example.androidpersonalbudget;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.webkit.WebView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidpersonalbudget.asyncTask.AsyncTaskRunner;
 import com.example.androidpersonalbudget.asyncTask.Callback;
 import com.example.androidpersonalbudget.network.HttpManager;
-import com.example.androidpersonalbudget.network.HttpManagerV2;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
